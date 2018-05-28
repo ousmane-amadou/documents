@@ -1,0 +1,10 @@
+This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2017.5.23)  25 MAY 2018 11:27
+ system commands enabled.
+ file:line:error style messages enabled.
+**midterm-review-package.tex
+(./midterm-review-package.tex
+LaTeX2e <2017-04-15>
+Lua module: luaotfload-main 2017/01/29 2.80001 OpenType layout system.
+Lua module: lualibs 2017-02-01 2.5 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2017-02-01 2.5 ConTeXt Lua libraries -- extended collection.(using write cache: /Users/ousmane-amadou/Library/texlive/2017/texmf-var/luatex-cache/generic)(using read cache: /usr/local/texlive/2017/texmf-var/luatex-cache/generic /Users/ousmane-amadou/Library/texlive/2017/texmf-var/luatex-cache/generic)
+luaotfload | conf : Root cache directory is /Users/ousmane-amadou/Library/texlive/2017/texmf-var/luatex-cache/generic/names.

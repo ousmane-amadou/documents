@@ -1,0 +1,384 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LaTeX book template                           %%
+%% Author:  Amber Jain (http://amberj.devio.us/) %%
+%% License: ISC license                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Source: http://en.wikibooks.org/wiki/LaTeX/Hyperlinks %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 'dedication' environment: To add a dedication paragraph at the start of book %
+% Source: http://www.tug.org/pipermail/texhax/2010-June/015184.html            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{dedication}
+{
+   \cleardoublepage
+   \thispagestyle{empty}
+   \vspace*{\stretch{1}}
+   \hfill\begin{minipage}[t]{0.66\textwidth}
+   \raggedright
+}
+{
+   \end{minipage}
+   \vspace*{\stretch{3}}
+   \clearpage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chapter quote at the start of chapter        %
+% Source: http://tex.stackexchange.com/a/53380 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\renewcommand{\@chapapp}{}% Not necessary...
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First page of book which contains 'stuff' like: %
+%  - Book title, subtitle                         %
+%  - Book author name                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Book's title and subtitle
+\title{\Huge \textbf{Sample Book Title}  \footnote{This is a footnote.} \\ \huge Sample book subtitle \footnote{This is yet another footnote.}}
+% Author
+\author{\textsc{First-name Last-name}\thanks{\url{www.example.com}}}
+
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add a dedication paragraph to dedicate your book to someone %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dedication}
+Dedicated to Calvin and Hobbes.
+\end{dedication}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Auto-generated table of contents, list of figures and list of tables %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+\mainmatter
+
+%%%%%%%%%%%
+% Preface %
+%%%%%%%%%%%
+\chapter*{Preface}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna.
+
+\section*{Un-numbered sample section}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna. Aliquam pellentesque imperdiet erat, eget consectetur felis malesuada quis. Pellentesque sollicitudin, odio sed dapibus eleifend, magna sem luctus turpis.
+
+\section*{Another sample section}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna. Aliquam pellentesque imperdiet erat, eget consectetur felis malesuada quis. Pellentesque sollicitudin, odio sed dapibus eleifend, magna sem luctus turpis, id aliquam felis dolor eu diam. Etiam ullamcorper, nunc a accumsan adipiscing, turpis odio bibendum erat, id convallis magna eros nec metus.
+
+\section*{Structure of book}
+% You might want to add short description about each chapter in this book.
+Each unit will focus on <SOMETHING>.
+
+\section*{About the companion website}
+The website\footnote{\url{https://github.com/amberj/latex-book-template}} for this file contains:
+\begin{itemize}
+  \item A link to (freely downlodable) latest version of this document.
+  \item Link to download LaTeX source for this document.
+  \item Miscellaneous material (e.g. suggested readings etc).
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Give credit where credit is due. %
+% Say thanks!                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgements}
+\begin{itemize}
+\item A special word of thanks goes to Professor Don Knuth\footnote{\url{http://www-cs-faculty.stanford.edu/~uno/}} (for \TeX{}) and Leslie Lamport\footnote{\url{http://www.lamport.org/}} (for \LaTeX{}).
+\item I'll also like to thank Gummi\footnote{\url{http://gummi.midnightcoding.org/}} developers and LaTeXila\footnote{\url{http://projects.gnome.org/latexila/}} development team for their awesome \LaTeX{} editors.
+\item I'm deeply indebted my parents, colleagues and friends for their support and encouragement.
+\end{itemize}
+\mbox{}\\
+%\mbox{}\\
+\noindent Amber Jain \\
+\noindent \url{http://amberj.devio.us/}
+
+%%%%%%%%%%%%%%%%
+% NEW CHAPTER! %
+%%%%%%%%%%%%%%%%
+\chapter{May 7, 2018 - Introduction}
+
+\begin{chapquote}{Author's name, \textit{Source of this quote}}
+``This is a quote and I don't know who said this.''
+\end{chapquote}
+
+\section{Summary}
+https://www.youtube.com/watch?v=Uc8wy_4H8X8
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \\ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \\ Lorem ipsum list:
+
+1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+2. Duis ac mi magna, a consectetur elit.
+
+3. Curabitur posuere erat \emph{dignissim ligula euismod} ut euismod nisi.
+
+4. Fusce vulputate facilisis neque, et ornare mauris mattis vel.
+
+5. Mauris sit amet nulla mi, vitae rutrum ante.
+
+6. Maecenas quis nulla risus, vel tincidunt ligula.
+
+7. Nullam ac enim neque, non \emph{dapibus} mauris.
+
+8. Integer volutpat leo a orci suscipit eget rhoncus urna eleifend.
+
+\noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus.}:
+
+\section{Thesis of NEW333H}
+\subsection{Why do humans need meaning in society?}
+Humans do not respond to raw stimulus. Instead, they
+respond to the meaning of stimuli. For example,
+
+The answer to this will be further developed through out the
+span of the course.
+
+\subsection{The Thesis of NEW333H}
+Thesis: The confluence of buddhism and cognitive science is a response to
+the meaning crisis in western society.
+
+In order to fully analyse the meaning crisis, NEW333H will:
+(1) Study the Genealogy of Meaning (i.e. conduct a historical analysis to
+understand the nature of the meaning crisis)
+(2) Study the Cognitive process involved in human meaning making (i.e. )
+
+Key Idea: Vervaeke proposes that by studying meaning in those two contexts seperately, we
+will have aqcuired the necessary foundational knowledge and 'machinery' to study
+the confluence of buddhism and cognitve science insofar as it addresses the meaning
+crisis.
+
+\section{History}
+\subsection{The Bronze Age Collapse | 1200 BC}
+The Bronze Age collapse is considered one of the greatest mysteries and losses
+in human history. What we do know about this mysterious event is that
+civilizations that had lasterd for thousands of years were collapsed in less
+than 1 human lifespan. The Bronze age collapse is often compared to the dinosaur
+extinction; there was massive destruction, affording massive speciation.
+
+Before empires rose up again, there was a lot of divergence with lots of social
+experimentation, resulting in the development of psychotechnologies,
+which are standardized ways brought about by culture of formatting and
+communicating information that enhances cognition. With literacy, we invented powerful distributed cognition capable of linking to both your own brain at different periods of time, and can link to other brains as well. Most problems are solved with distributed cognition, and it is so embedded within our thinking that we often experience the illusion of explanatory depth, confusing access to DC with individual cognition (e.g. bicycle drawings). While literacy was pre-collapse, alphabetic literacy with its phonetic basis allowed for increase of capable literates due to easier learning. This enhances and expands your cognition by allowing you to ‘look’ at your own mind and reflect again and again.
+
+
+\subsection{The Axial Revolution (or Age) | 800 BC to 300 BC}
+
+Presently, we see gods as supernatural and significantly superior. However,
+Charles Taylor (Canadian Philosopher, 1931 - present) says that in the
+pre-axial age, there was no difference between the gods and men except
+for the degree of power they wielded. Charles Taylor said that the pre-Axial
+and pre-collapse worldview was oriented around the continuous cosmos, though
+this has been debated. He said that people experienced great
+continuity between the cultural/natural/sacred worlds. (A human could actually
+become a god such as Alexander the Great, because he wielded great power.) They
+also had the idea that time is a continuous, cyclical thing, having no sense
+of overall ‘progress’. Societies tried to preserve and remain harmonious with the current order,
+with the aim of cycling back to the origin, and doing so was meaningful. As
+such, wisdom was how to best harmonize with the cyclical continuity, a project
+of learning these skills so as to live long and prosper.
+
+The differences between the natural world, social world, and spiritual world
+were largely differences in power that could be amassed. In this world, wisdom
+was understood as the practical skill of how to gain power.
+
+Description: The nature of reality was understood in terms of a 'continuous comsos'
+in the pre-axial age. This changed to an alternative way of thinking about reality,
+hence the characterization of this age as Axial.
+
+This age featured a radical transformation in human cognition.
+
+Took place in Ancient Greece, Ancient Israel, Ancient India, and Ancient China.
+
+Questions
+
+What is the relationship between psychotechnologies and Metacognition? \\
+Psychotechnologies empower our natural abilitty metacognition. When psychotechnologies
+are internalized and integrated with your metacognition, 2nd-order thinking abilities
+are developed.
+
+How did the definition of wisdom change in the Axial Revolution? \\
+The pre-axial worldview was oriented around the notion of the 'continuous consoms.'
+There was a universal beleif that life was understood in a continuous cyclical
+fashion where wisdom was defined as optimal integration with the continuous comsos.
+
+Gods were repersentatives of power.
+
+How do psychotechnologies impact human cognition? \\
+
+How did alphabetic literacy impact human cognition? \\
+Literacy allowed mankind to externalize their thoughts, and enable the
+persistance of information across space and time.
+
+How did meaning transform in the Axial Age? Was there a notion of meaning
+in the pre-axial world view?
+
+How did
+
+Why do we feel no sense of continuity with ancient Egypt, or other
+civilization pre-800 BCE, though we do to ancient Greece and civilizations
+post-300 BCE? \\
+
+There was a fundamental change that occurred. Notice how science came
+from ancient Greece, and history from ancient Israel, and these same advances occurred in India and China. The world’s major
+religions emerged around this point, during the Axial period.
+
+\section{Concepts and Phenomena}
+
+\subsection{Continous Cosmos}
+\subsection{Distributed Cognition}
+"A cognitive system whose structures and processes are distributed
+ between internal and external representations, across a group of
+ individuals, and across space and time" (Zhang and Patel, 2006).
+
+It is important to note that most problems are solved through distributed
+cognition.
+
+The relationship between distributed and individual cognition,
+is similar to the realtionship between an independent computer (or node) in a
+network, and the network itself.
+
+How does distributed cognition behave like a system? What impact might it
+have on meaning?
+
+
+\subsection{Metacognition}
+- A higher order thinking Skill
+- Derived from the words meta meaning beyond and cognition which is
+ "the mental action or process of acquiring knowledge and understanding
+ through thought, experience, and the senses."
+- Metacognition is the awareness of cognition, and through
+ literacy this increases, leading to what Bellah dubs Second Order
+ Thinking (SOT). This involves reflectively analyzing and criticizing
+ one’s own cognition, and when integrated with distributed cognition, becomes
+ very powerful in its affordance of self-criticism and correction/transcendence.
+
+ \subsection{Psychotechnologies}
+ Standardized ways brought about by culture of formatting and
+ communicating information that enhances cognition.
+
+ A cognitive tool developed for the purpose of influencing human
+ behaviour.
+
+ Examples: History, Alphabetic and Numeric Literacy, Money,
+ Related Concepts:
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sample table                                        %
+% Source: www1.maths.leeds.ac.uk/latex/TableHelp1.pdf %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ht]
+\caption{Sample table} % title of Table
+\centering % used for centering table
+\begin{tabular}{c c c c}
+% centered columns (4 columns)
+\hline\hline %inserts double horizontal lines
+S. No. & Column\#1 & Column\#2 & Column\#3 \\ [0.5ex]
+% inserts table
+%heading
+\hline % inserts single horizontal line
+1 & 50 & 837 & 970 \\
+2 & 47 & 877 & 230 \\
+3 & 31 & 25 & 415 \\
+4 & 35 & 144 & 2356 \\
+5 & 45 & 300 & 556 \\ [1ex] % [1ex] adds vertical space
+\hline %inserts single line
+\end{tabular}
+\label{table:nonlin} % is used to refer this table in the text
+\end{table}
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \\ Lorem ipsum list:
+\begin{itemize}
+\item Mauris sit amet nulla mi, vitae rutrum ante.
+\item Maecenas quis nulla risus, vel tincidunt ligula.
+\item Nullam ac enim neque, non \emph{dapibus} mauris.
+\end{itemize}
+
+\noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus.}:
+
+\subsection{Lorem ipsum dolor sit amet, consectetur adipiscing elit.}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna. Aliquam pellentesque imperdiet erat, eget consectetur felis malesuada quis. Pellentesque sollicitudin, odio sed dapibus eleifend, magna sem luctus turpis, id aliquam felis dolor eu diam. Etiam ullamcorper, nunc a accumsan adipiscing, turpis odio bibendum erat, id convallis magna eros nec metus. Sed vel ligula justo, sit amet vestibulum dolor. Sed vitae augue sit amet magna ullamcorper suscipit. Quisque dictum ipsum a sapien egestas facilisis.
+
+\subsection{Lorem ipsum dolor sit amet, consectetur adipiscing}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna. Aliquam pellentesque imperdiet erat, eget consectetur felis malesuada quis. Pellentesque sollicitudin, odio sed dapibus eleifend, magna sem luctus turpis, id aliquam felis dolor eu diam.
+
+
+%%%%%%%%%%%%%%%%
+% NEW CHAPTER! %
+%%%%%%%%%%%%%%%%
+\chapter{May 9, 2018 - Meaning Crisis as the Collapse of the Three Orders}
+
+\begin{chapquote}{Author's name, \textit{Source of this quote}}
+``This is a quote and I don't know who said this.''
+\end{chapquote}
+
+\section{Summary}
+https://www.youtube.com/watch?v=Uc8wy_4H8X8
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \\ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \\ Lorem ipsum list:
+
+1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+2. Duis ac mi magna, a consectetur elit.
+
+3. Curabitur posuere erat \emph{dignissim ligula euismod} ut euismod nisi.
+
+4. Fusce vulputate facilisis neque, et ornare mauris mattis vel.
+
+5. Mauris sit amet nulla mi, vitae rutrum ante.
+
+6. Maecenas quis nulla risus, vel tincidunt ligula.
+
+7. Nullam ac enim neque, non \emph{dapibus} mauris.
+
+8. Integer volutpat leo a orci suscipit eget rhoncus urna eleifend.
+
+\noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus. Praesent egestas nisi id metus rhoncus ac lobortis sem hendrerit. Etiam et sapien eget lectus interdum posuere sit amet ac urna\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus ante, auctor et pulvinar non, posuere ac lacus.}:
+
+\section{Thesis of NEW333H}
+\subsection{Why do humans need meaning in society?}
+Humans do not respond to raw stimulus. Instead, they
+respond to the meaning of stimuli. For example,
+
+The answer to this will be further developed through out the
+span of the course.
+
+\subsection{The Thesis of NEW333H}
+Thesis: The confluence of buddhism and cognitive science is a response to
+the meaning crisis in western society.
+
+In order to fully analyse the meaning crisis, NEW333H will:
+(1) Study the Genealogy of Meaning (i.e. conduct a historical analysis to
+understand the nature of the meaning crisis)
+(2) Study the Cognitive process involved in human meaning making (i.e. )
+\end{document}
+
+\section{ Concepts, Terms and Phenomena }
+
+\subsection{Da'ath}
+An ancient hebrew term.
