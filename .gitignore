@@ -1,13 +1,6 @@
 *.aux
-*.fdb_latexmk
-*.fls
-*.idx
-*.ilg
-*.ind
-*.lof
 *.log
-*.lot
-*.out
-*synctex.gz
-*.toc
-phl232-final-paper.*
+*.fdb_latexmk
+*.gz
+*.xdv
+*.fls
