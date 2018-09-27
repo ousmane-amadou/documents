@@ -39,8 +39,8 @@
    \begin{center}
    \framebox{
       \vbox{\vspace{2mm}
-    \hbox to 6.28in { {\bf SC-607: Optimization
-	\hfill Spring 2016} }
+    \hbox to 6.28in { {\bf COG250H1: Introduction to Cognitive Science
+	\hfill Fall 2018} }
        \vspace{4mm}
        \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
        \vspace{2mm}
@@ -95,37 +95,74 @@
 \begin{document}
 %FILL IN THE RIGHT INFO.
 %\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
-\lecture{2}{February 16}{Anderson Todd}{Ousmane Amadou}
+\lecture{2}{Categorization (Part 1)}{Anderson Todd}{Ousmane Amadou}
 %\footnotetext{These notes are partially based on those of Nigel Mansell.}
 
 % **** YOUR NOTES GO HERE:
-\section{Simplex Algorithm (Continued)}
-\subsection*{11.1.1 Assumptions}So far we have made the following assumptions:
-\begin{enumerate}
-\item The LP is in the standard form i.e.\\
-\begin{eqnarray*}
-\min c^T x  \\
-\mbox{s.t}\  Ax=b,
-\newline
-\\x\geq 0
-\end{eqnarray*}
-\\
-where $C,x\in{\mathbb R^{n}}$, $A \in {\mathbb R^{m\times n}} $ , $b \in{\mathbb R^{m}}$ and $rank(A)= m$
+\section{An Overview of Cognitive Science (CogSci) }
+\subsection{Motivation}
+Key writing points:
+  (1) Black box approach
+  (2) Examples of cogsci in real life (Machine learning, Stock Crash, )
+As machine learning is picking up (quickly), also hitting a problem that many of these problems are "black boxes"
+(not understanding how it actually works, or how it works under the hood)
 
-\item Every Basic Feasible Solution i.e. BFS is non-degenerate
-\item BFS is in the form
-\begin{equation}
-[I \mid Y] \left[ \begin{matrix}
-x
-\end{matrix}\right] = y_0
-\label{eq1}
-\end{equation}
-where I is $m \times m$ Identity Matrix,
-$ x = \left[ \begin{array}{cc}
-x_{B}  \\
-x_{NB}   \end{array} \right]$,~~$x_B \in R^n $ and $x_{NB} \in R^{n-m}$
+\subsection{What is CogSci?}
+Cogsci seeks to develop a common language for describing \textbf{cognitive phenomena}
+that can be understood through multiple disciplines.
+
+There are three models of cognitive science:
+\begin{enumerate}
+  \item Generic Nominalism
+    \begin{itemize}
+      \item The weakest definition of CogSci
+      \item In this vision, CogSci is not it's own discipline. Instead, it is
+            a generic term describing the study of mind in CogSci's subdisciplines.
+      \item This vision is generally not accepted in third generation cognitive science
+    \end{itemize}
+  \item Interdisciplinary Ecclecticsm
+  \begin{itemize}
+    \item The weakest definition of CogSci
+    \item In this vision, CogSci is not it's own discipline. Instead, it is
+          a generic term describing the study of mind in CogSci's subdisciplines.
+    \item This vision is generally not accepted in third generation cognitive science
+  \end{itemize}
+  \item Synoptic Integration
+  \begin{itemize}
+    \item The weakest definition of CogSci
+    \item In this vision, CogSci is not it's own discipline. Instead, it is
+          a generic term describing the study of mind in CogSci's subdisciplines.
+    \item This vision is generally not accepted in third generation cognitive science
+  \end{itemize}
 
 \end{enumerate}
+
+% So far we have made the following assumptions:
+% \begin{enumerate}
+% \item The LP is in the standard form i.e.\\
+% \begin{eqnarray*}
+% \min c^T x  \\
+% \mbox{s.t}\  Ax=b,
+% \newline
+% \\x\geq 0
+% \end{eqnarray*}
+% \\
+% where $C,x\in{\mathbb R^{n}}$, $A \in {\mathbb R^{m\times n}} $ , $b \in{\mathbb R^{m}}$ and $rank(A)= m$
+%
+% \item Every Basic Feasible Solution i.e. BFS is non-degenerate
+% \item BFS is in the form
+% \begin{equation}
+% [I \mid Y] \left[ \begin{matrix}
+% x
+% \end{matrix}\right] = y_0
+% \label{eq1}
+% \end{equation}
+% where I is $m \times m$ Identity Matrix,
+% $ x = \left[ \begin{array}{cc}
+% x_{B}  \\
+% x_{NB}   \end{array} \right]$,~~$x_B \in R^n $ and $x_{NB} \in R^{n-m}$
+%
+% \end{enumerate}
 \section{Basic Steps of Algorithm}
 \begin{itemize}
 \item Generic step of the algorithm is to swap a basic variable with a non basic variable. For now assume
