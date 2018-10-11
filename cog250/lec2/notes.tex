@@ -133,17 +133,16 @@ There are, however, problems with this approach. Many machine learning systems t
 days are very black box. That is, although we understand the basic principles
 of how these systems work, they are not fully yet understood.
 
-\subsection{Metaphors}
-
-\begin{itemize}
-  \item "Brains host culture."
-\end{itemize}
-
 \subsection{Theoretical Constucts and Plausibility}
-Key writing points:
-  (1) Metaphors and multi aptness
-  (2) Convergence of evidence (works for multiple streams of evidence)
-      example:
+
+A theoretical construct (a.k.a hypothetical construct) is description of
+an ideal object (an idea) that is not directly observable. Theoretical constructs
+are judged on how accurately they describe the object. A theoretical concept is
+strong if and only if it is: multi apt, is supported by converging evidence, is
+elegantly formulated.
+
+More Writing Points: Explain Multi Aptnes, Describe the connection between aptness
+and metphor
 
 \subsection{What is CogSci?}
 We don't know what makes us think.
@@ -158,20 +157,17 @@ There are three 'visions' for cognitive science:
 \begin{enumerate}
   \item Generic Nominalism (Very High Level)
     \begin{itemize}
-      \item The weakest definition of CogSci
-      \item In its weakest form, cognitive science is just the sum of the fields
-            mentioned: psychology, artificial intelligence, linguistics, neuroscience,
-            anthropology, and philosophy
-      \item In this vision, CogSci is not it's own discipline. Instead, it is
-            a generic term describing the study of the mind in CogSci's subdisciplines.
-      \item Nominalism means name. Generic corresponds to genre. Cogntive science
-            is a name for a a genre of related topics.
-      \item Under this vision disciplines related to the study of mind would be considered
-            the cognitive sciences. That is, the only requirement for doing cognitive science
-            is to do something related to the study of the mind.
+      \item In its weakest vision, cognitive science is the sum of the following
+            fields as the pertain to the study of the mind: psychology, artificial
+            intelligence, linguistics, neuroscience, anthropology, and philosophy.
+      \item Under this vision the only requirement for doing cognitive science
+            is to do something related to the study of the mind. Thus the fields
+            mentioned are referred to as the cognitive sciences.
+      \item The term generic nominalism has two components. Generic corresponds
+            to genre.. Nominalism corresponds to name.
       \item This vision is generally not accepted in third generation cognitive science
     \end{itemize}
-  \item Interdisciplinary Ecclecticsm (Still High Live)
+  \item Interdisciplinary Ecclecticsm (Still High Level)
   \begin{itemize}
     \item A stonger definition than generic nominalism, not the strongest
     \item Under this vision, different disciplines
@@ -187,62 +183,45 @@ There are three 'visions' for cognitive science:
   \item Synoptic Integration (Lowest level)
   \begin{itemize}
     \item The strongest definition of CogSci.
+    \item If you are able to communicate back and forth between the involved
+          cognitive science disciplines, you reach perfect integration.
     \item CogSci, under this model, is a unique discipline. Doing CogSci is deliberate.
   \end{itemize}
 \end{enumerate}
 
-% So far we have made the following assumptions:
-% \begin{enumerate}
-% \item The LP is in the standard form i.e.\\
-% \begin{eqnarray*}
-% \min c^T x  \\
-% \mbox{s.t}\  Ax=b,
-% \newline
-% \\x\geq 0
-% \end{eqnarray*}
-% \\
-% where $C,x\in{\mathbb R^{n}}$, $A \in {\mathbb R^{m\times n}} $ , $b \in{\mathbb R^{m}}$ and $rank(A)= m$
-%
-% \item Every Basic Feasible Solution i.e. BFS is non-degenerate
-% \item BFS is in the form
-% \begin{equation}
-% [I \mid Y] \left[ \begin{matrix}
-% x
-% \end{matrix}\right] = y_0
-% \label{eq1}
-% \end{equation}
-% where I is $m \times m$ Identity Matrix,
-% $ x = \left[ \begin{array}{cc}
-% x_{B}  \\
-% x_{NB}   \end{array} \right]$,~~$x_B \in R^n $ and $x_{NB} \in R^{n-m}$
-%
-% \end{enumerate}
 \section{Naturalistic Imperative}
-On of the goals of science is to 'naturalize' our understanding of the universe.
-There is a innate human desire to bring our minds in line with all the scientific
-disciplines.
+Core Ideas: Humans have innate desire to learn about natural world, Philosophers
+are trained thinkers and are skilled in navigating the abstract,
 
-The Naturalistic Imperative is a term coined by John Vervaeke. It comprises
-of three parts. Analysis, Formalization, and Mechanization. To understand
+The Naturalistic Imperative is a term coined by John Vervaeke. One of the goals
+of science is to 'naturalize' our understanding of the universe. There is an innate
+human desire to bring our minds in line with all the scientific disciplines.
+
+It comprises of three parts. Analysis, Formalization, and Mechanization. To understand
 the naturalistic imperative it is useful to look at previous scientific revolutions:
 
-
-
+Philosophers are trained in the abstract.
 
 \subsection{Analyze}
-\subsubsection{A brief introduction to presocratic thinkers}
+Timeline
+1. Presocratics (Thales of Miletus)
+2. Socrates, Plato and Aristotle
+3. The Enlightenment
+
+\subsubsection{The Presocratics (469 B.C - 4 B.C)}
 
 
 \href{https://www.youtube.com/watch?v=ZkMAx04jDx0}{Video A}
 
 \textbf{Main idea:} The Presocratics ushered in the philosophic and scientific
 mindset that would dramatically alter the course of western civilization.
-
+The concept of rational thought and logos was originated by presocratic thinkers.
 
 In general, Ancient greek philosophers form the intellectual and cultural foundations
 of western civilization. If one wants to understand western civilization one must understand
 the works of Socrates, Plato and Aristotle.
-The concept of rational thought and logos was originated by presocratic thinkers.
+
+
 Talking points:
 Introduction to the Presocratics:
 (1) Presocratic philosophers
@@ -271,111 +250,4 @@ We know three things
 
 \subsection{Mechanize}
 
-
-\begin{itemize}
-\item Generic step of the algorithm is to swap a basic variable with a non basic variable. For now assume
-that we have selected basic variable $x_p$ and non-basic variable $x_q$ to swap
-\item $x_p$ can be swapped with $x_q$ if and only if $Y_{pq} \ne 0$ because if $Y_{pq}$ is equal to 0 then column vector $Y_q$
-can be represented as linear combination of m − 1 basis vectors i.e.
-\[ Y_q=\sum_{i=1~i \neq p}^m y_{iq} \ast I_i\]
-and hence $Y_q$ cannot be included in basic solution
-\item Now make $q^{th}$ column as $ \left[ \begin{array}{ccccccc}
- 0 & ... & 0 & 1_p & 0 & ... & 0
-  \end{array} \right]$ where $1_p$
-  signifies 1 at
-  $p^{th}$
-  position. For that
-
- divide$p_{th}$row of matrix$ \left[ \begin{array}{cc}
-I &
-Y  \end{array} \right]$
-and matrix $ \left[ \begin{array}{cc}
-Y(0) \end{array} \right]$
-by
-$Y_{pq}$ and apply the row operation $R_i \Rightarrow R_i - Y_{iq} \ast R_p$
-\end{itemize}
-\section{Determining the Leaving Variable p}
-\begin{itemize}
-\item While applying row transformation of
-$ \left[ \begin{array}{cc}
-I &
-Y  \end{array} \right]$ rows of $ \left[ \begin{array}{c}
-I  \end{array} \right]$ also changes and are given by
-\[Y_{i0}\textprime =Y_{i0}-Y_{iq}\ast Y_{p0} / Y_{i0} \]
-Condition $Y_{i0}\textprime \ge 0 $ must satisfy otherwise $x_q$ would not be a BFS.
-\item So choose p such that
-\[p \in S = \underset{i}{\operatorname{argmin}} \{Y_{i0}/Y_{iq} | Y_{iq} \ge 0\}\]
-\item If number of elements in S is $>$ 1 then the would become degenerate. Since non-degeneracy is assumed
-\[p = \underset{i}{\operatorname{argmin}}\{Y_{i0}/Y_{iq} | Y_{iq} \ge 0\}\]
-\end{itemize}
-
-\section{Determining the Entering Variable q}
-\begin{itemize}
-\item We Know that
-\[ \left[ \begin{array}{cc}
-I &
-Y  \end{array} \right] \left[ \begin{array}{cc}
-x_B \\
-x_{NB}  \end{array} \right]= \left[ \begin{array}{c}
-
-Y(0)  \end{array} \right] \]
-\[ x_B=Y_0-Yx_{NB} \]
-\[Where \left[ \begin{array}{cc}
-x_B \\
-x_{NB}  \end{array} \right] \ge 0 \]
-\item Initial Cost:
-\[c^T\left[ \begin{array}{cc}
-x_B \\
-x_{NB}  \end{array} \right] =c_B^Tx_B+c_{NB}^Tx_{NB} \]
-\[=c_B^Tx_B\]
-\[=c_B^T Y_0\]
-\[since~~x_{NB}=0 ~~and~~ I \ast x_B + Y \ast x_{NB}= Y_0\]
-\item Now cost is
-\[c^T\left[ \begin{array}{cc}
-x_B \\
-x_{NB}  \end{array} \right] =c_B^Tx_B+c_{NB}^Tx_{NB} \]
-\[=c_B^T(Y_0-Yx_{NB})+c_{NB}^Tx_{NB}\]
-\[ =c_B^TY_0+(c_{NB-Y^Tc_B})^Tx_{NB} \]
-\item Now we can choose q such for which	$(c_{NB}-Y^Tc_B)_q<0$
-\item Formalizing the above concept
-\[ \left[ \begin{array}{cccccccc}
-1 & 0 & ... & 0 & Y_{1,m+1} &Y_{1,m+2} & ... & Y_{1,n} \\
-0 & 1 & ... & 0 & Y_{2,m+1} &Y_{2,m+2} & ... & Y_{2,n} \\
-. & . & . & . & . & . & ... & . \\
-. & . & . & . & . & . & ... & . \\
-. & . & . & . & . & . & ... & . \\
-0 & 0 & ... & 1 & Y_{m,m+1} &Y_{m,m+2} & ... & Y_{m,n} \\
-  \end{array} \right] \left[ \begin{array}{c}
-x_1\\ .\\ .\\ .\\ x_m\\ .\\ .\\ .\\x_n   \end{array} \right] = \left[ \begin{array}{c}
-y_{10}\\ .\\ .\\ .\\ y_{m0}\\ .\\ .\\ .\\y_{n0}   \end{array} \right]  \]
-and
-\[(c_{NB}-Y^Tc_B)^Tx_{NB}=\sum_{j=m+1}^n(c_j-Z_j)\ast x_j\]
-\[Where ~~ Z_j=\sum_{i=1}^m(Y_{i,j}\ast c_i)\]
-\item To determine the entering variable choose j such that $(c_j - Z_j ) < 0$
-\end{itemize}
-\subsection{Theorem 8.1.} Given a non-degenerate Basic Feasible Solution with objective value $Z\textprime$ . Suppose $c_j - Z_j\textprime < 0$
-for some j there is a feasible solution with objective value $< Z\textprime$ . Also if variable $x_j$ can be substituted for
-a variable in the basis for a new BFS, we get new BFS with value $Z_0 < 0$. If this cannot be done then the
-solution is unbounded.
-\section{Optimality condition}
-The Basic Feasible Solution is optimal if
-\[\forall,~~~~ c_j - 	Z_j \ge 0\]
-\section{Some Points to Ponder}
-\begin{itemize}
-\item f there does not exist p to replace then we have founded the recession direction and the cost can be
-reduced to $-\infty$
-\item In the worst case the Simplex Algorithm might visit all the extreme points. Example - Klee Minty cube
-\end{itemize}
-\pagebreak
-\section{Duality}
-Every linear programming problem, referred to as a primal problem, can be converted into a dual problem,
-which provides an upper bound to the optimal value of the primal problem. The primal problem is:
-\[\underset{x}{\operatorname{min}} ~c^Tx\]
-\[Ax=b\]
-\[x \ge 0\]
-\[Where ~~ A \in R^{m \times n},~Rank(A)=m\]
-with the corresponding symmetric dual problem,
-\[\underset{y}{\operatorname{max}} ~ b^Ty\]
-\[A^Ty \le c\]
-\[Where ~~ A \in R^{m \times n},~Rank(A)=m\]
  \end{document}
