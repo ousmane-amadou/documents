@@ -1,0 +1,189 @@
+%-------------------------
+% Resume in Latex
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{http://osam.me/}{\Large Ousmane Amadou}} & Email : \href{mailto:ousmane.amadou89@gmail.com}{ousmane.amadou89@gmail.com}\\
+  \href{http://osam.model/}{http://osam.me} & Mobile : +1-88847-571-7353 \\
+\end{tabular*}
+
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University Of Toronto}{Toronto, ON}
+      {Bachelor of Science in Computational Cognitive Science and Statistics}{Sept 2017 -- Present}
+      \resumeItemListStart
+        \resumeItem{Relevant Courses}
+          {Introduction to Theory of Computation, Data Computation and The Mind, Software Design, Interaction Design, Modern Symbolic Logic, Linear Algebra I, Calculus I and II}
+        \resumeItem{Activities}
+          {Phi Kappa Sigma, Game Development Club, Vocomotive Jazz Choir, The Entrepreneurship Hatchery}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Earl of March Secondary School}{Ottawa, ON}
+      {Ontario Secondary School Diploma}{Sept 2012 -- June 2016}
+      \resumeItemListStart
+        \resumeItem{Activities}
+          {President of Computer Science Club, Musical Theatre Pit Band, Jazz Band}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Weav}{Scarborough, ON}
+      {Technical Co-Founder and Developer}{Sept 2017 - May 2018}
+      \resumeItemListStart
+        \resumeItem{Project Summary}
+          {Weav is an app that matches drivers and riders for scheduled rideshares. Please visit https:/letsweav.com for more.}
+        \resumeItem{Milestones}
+          {Successfully completed 20,000 dollars in seed round funding and admitted as a member of the Hatchery's 2018 Summer Nest Cohort. }
+        \resumeItem{Technical Writing}
+          {Assumed all of the technical writing and data archival duties. Created and maintained 
+          back-end API documentation, uml diagrams, and system design documents.}
+        \resumeItem{System Architecture}
+          {Designed the core system architecture, using AWS as our primary cloud service provider.}
+        \resumeItem{Development}
+          {Developed and deployed the first two versions of the company website from reference Photoshop files to an AWS ECS Instance.}
+      \resumeItemListEnd
+    
+    \resumeSubheading
+      {Computer Science Enrichment Club}{Scarborough, ON}
+      {Sessional Lecturer}{Sep 2017 - Apr 2018}
+      \resumeItemListStart
+        \resumeItem{Algorithm Lectures}
+        {Presented a series of bi-weekly competitive progamming lectures to a group of keen rst year computer
+        science students. Topics that I covered were basic data structures, graph data strucutures, and dynamic programming problems.
+        See the presentation slides \href{https://github.com/csecutsc/T-414-AFLV}{here.} }
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Ottawa-Carleton District School Board}{Ottawa, ON}
+      {On Call Sound/Lighting Board Operator}{Sept 2013 - Jul 2016}
+      \resumeItemListStart
+        \resumeItem{Liason}
+          {Elected A/V Liason for the EOM students council for a 1 year term and collaborated 
+            with event organizers to design sound and lighting for coffee houses, dance showcases, 
+            etc. }
+        \resumeItem{Sound Team Member}
+          {Mixed audio and managed sound cues for live events. Trained new members to understand basic cable management, setting up microphones, 
+          using a mixer, etc..}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Shoppr}
+      {A smart shopping tool for mall and indoor shopping environments. See more
+       \href{https://docs.google.com/presentation/d/19Re0_eoscr-ljDUIEc389gzJJyxJQ8Loe7jXswiwRM8/edit?usp=sharing}{here.}}
+    \resumeSubItem{Solutions Archive}
+      {A snapshot archive of my solutions to programming competitions. These solutions were written in C++, Java or Python. \href{https://github.com/ousmane-amadou/competitive-programming}{Go to github.}}
+    \resumeSubItem{Text Time}
+      {A speed texting prototyped at UofTHacksV. Made in Unity3D+C\#. \href{https://github.com/ousmane-amadou/competitive-programming}{Go to github.} }
+  \resumeSubHeadingListEnd
+
+%
+%--------PROGRAMMING SKILLS------------
+\section{Technical Skills}
+ \resumeSubHeadingListStart
+    \resumeSubItem{Scripting}
+      {HTML, CSS, Javascript, Bootstrap, SemanticUI}
+    \resumeSubItem{Programming}
+      {Python, Java, C++, C\#, \LaTeX}
+    \resumeSubItem{Technologies}
+      {AWS, Trello, Unity3D, Adobe XD, Adobe Photoshop}
+    \resumeSubItem{Other}
+      {UX Design, Technical Writing, Sound Mixing}
+ \resumeSubHeadingListEnd
+%
+%--------PROGRAMMING SKILLS------------
+\section{Awards and Achievments}
+\resumeSubHeadingListStart
+    \resumeSubItem{ACM-ICPC Regional Qualifier}
+      {Placed 28th out of 126 teams at the 2016 ACM-ICPC regional qualifier.}
+    \resumeSubItem{Ottawa Youth Network's App Jam}
+      {Finalist out of 100+ Submissions.}
+    \resumeSubItem{UTSC's The Hub Pitch Competition}
+      {Winner of 2017's Pitch Competition for Weav.}
+ \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}
