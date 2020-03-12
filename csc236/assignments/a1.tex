@@ -1,0 +1,294 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to writeLaTeX --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you give
+% someone the link to this page, they can edit at the same
+% time. See the help menu above for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newtheorem*{proposition}{Proposition}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\title{CSC236H, Fall 2017 \\
+Assignment \# 1}
+\author{Ousmane Amadou, Tasbir Rahman, Binderiya Adishaa }
+
+\maketitle
+%Note 1: The * tells LaTeX not to number the lines.  If you remove the *, be sure to remove it below, too.
+%Note 2: Inside the align environment, you do not want to use $-signs.
+% The reason for this is that this is already a math environment. This is why we have to include \text{} around any text inside the align environment.
+
+\section*{Question 1}
+\begin{proof} % You can also use solution in place of proof.
+Define the predicate $P(n)$ as follows:
+$$P(n): 2^{n+2} + 3^{2n+1} \text{ is divisible by 7 where $n \in \mathbb{N}$}$$
+\textbf{Remark:}  By definition of divisiblity, to prove that $2^{n+2} + 3^{2n+1}$ is divisible
+by 7 it suffices to show that $ \exists j \in \mathbb{Z} \ s.t. \ 2^{n+2} + 3^{2n+1} = 7j $ \\
+\textbf{Base case:} Let n=1. Then
+\begin{align*}
+2^{n+2} + 3^{2n+1}
+& = 2^{1+2} + 3^{2(1)+1} \\
+& = 2^3 + 3^3 \\
+& = 8 + 27  \\
+& = 35  \\
+& = 7 * 5
+\end{align*}
+\indent Since $5 \in \mathbb{Z}$, $ \exists j \in \mathbb{Z} \ s.t. \ 2^{n+2} + 3^{2n+1} = 7j $.
+Thus P(1) holds. \\
+\textbf{Inductive Step:}
+Let $k \in \mathbb{Z}^{+}$ be arbitrary. Suppose that $P(k)$ holds \textbf{[IH]}. We must prove
+that P(k+1) holds, i.e. $2^{(k+1)+2} + 2^{2(k+1)+1}$ is divisible by 7. So, \\
+\begin{align*}
+2^{(k+1)+2} + 3^{2(k+1) +1} &=2^{k+3} + 3^{2k +3} \\
+&=2(2^{k+2}) + 9(3^{2k+1})\\
+&=2(2^{k+2}) + 2(3^{2k+1}) + 7(3^{2k+1})\\
+&=2(2^{k+2} + 3^{2k+1}) + 7(3^{2k+1})\\
+&=7w + 7(3^{2k+1}) \text{ for some $w\in\mathbb{Z} $\indent\indent (By IH)}\\
+&=7(w + 3^{2k+1})
+\end{align*}
+Since $w \in \mathbb{Z}$ and $3^{2k+1} \in \mathbb{Z}$, we know that
+$w + 3^{2k+1} \in \mathbb{Z}$ because $\mathbb{Z }$ is closed under
+the $+$ operation. So, $\exists j \in \mathbb{Z} \ s.t. \ 2^{(k+1)+2} + 3^{2(k+1)+1} = 7j$. Thus
+P(k+1) holds. \\
+
+In conclusion, by principle of simple induction $ \forall n \in \mathbb{Z}^+ . P(n). $
+\end{proof}
+
+\section*{Question 2}
+Define $P(n)$ as follows:
+$$P(n) : \text{$f(n)$ is divisible by $5$}$$
+Need to prove $P(n)$ for all $n \in \mathbb{N}$ such that  $n \geq 4$\\
+First, note that f(2) = 3 (*)
+\\\textit{Proof of (*):}
+\begin{align*}
+& f(2) =\\
+&= f(\lfloor\sqrt{2}\rfloor)^{2} + 2f(\lfloor\sqrt{2}\rfloor) &\text{ (by definition of $f(n)$)}\\
+& =f(\lfloor1.414...\rfloor)^{2} + 2f(\lfloor1.414...\rfloor)\\
+& =f(1)^{2} + 2f(1)\\
+& = 1^2 + 2*1  &\text{(by definition of $f(n)$)}\\
+& = 1 + 2\\
+& = 3\\
+&& \qed
+\end{align*}
+Next note that f(2) = f(3) (**)
+\\\textit{Proof of (**):}
+\begin{align*}
+& f(3) =\\
+&= f(\lfloor\sqrt{3}\rfloor)^{2} + 2f(\lfloor\sqrt{3}\rfloor) &\text{ (by definition of $f(n)$)}\\
+& =f(\lfloor1.73...\rfloor)^{2} + 2f(\lfloor1.73...\rfloor)\\
+& =f(1)^{2} + 2f(1)\\
+& = 1^2 + 2*1  &\text{(by definition of $f(n)$)}\\
+& = 1 + 2\\
+& = 3\\
+& = f(2) &\text{(by (*))}
+&& \qed
+\end{align*}
+\begin{proof}
+\textbf{Base Case $P(4)$}
+\begin{align*}
+&f(4)\\
+&= f(\lfloor\sqrt{4}\rfloor)^{2} + 2f(\lfloor\sqrt{4}\rfloor) &\text{ (by definition of $f(n)$)}\\
+& =f(\lfloor2\rfloor)^{2} + 2f(\lfloor2\rfloor)\\
+& =f(2)^{2} + 2f(2)\\
+& = 3^2 + 2*3  &\text{(by (*))}\\
+& = 9 + 6\\
+& = 15\\
+& = 5 * 3\\
+\text{Since $3 \in \mathbb{Z}, P(4)$ holds, base case holds}
+\end{align*}\\
+\textbf{Inductive Step}\\\\
+Let $k \in \mathbb{N}$ such that $k \geq 5$
+Assume for all $a$ such that $ 4 \leq a < k, P(a)$ holds \textbf{[IH]}\\We want to prove $P(k)$ \\\\
+Case $ 4 \leq k < 16$\\\\
+By square rooting all sides of inequality(allowed since all sides are nonnegative) it follows that
+$2.236067... \leq \sqrt{k} < 4$ from which it's immediately apparent that $\lfloor\sqrt{k}\rfloor = 2$ or $\lfloor\sqrt{k}\rfloor = 3$ (***). This is because either $2.236067... \leq \sqrt{k} < 3$, in which case $\lfloor\sqrt{k}\rfloor = 2$ or $3 \leq \sqrt{k} < 4$ , in which case  $\lfloor\sqrt{k}\rfloor = 3$.  We have:
+
+\begin{align*}
+&f(k)\\
+&= f(\lfloor\sqrt{k}\rfloor)^{2} + 2f(\lfloor\sqrt{k}\rfloor) &\text{(by definition of $f(n)$)}\\
+& =f(2)^{2} + 2f(2) \text{ or } f(3)^{2} + 2f(3) &\text{(by (***))}\\
+& =f(2)^{2} + 2f(2) &\text{(by (**))}\\
+& = 3^2 + 2*3  &\text{(by (*))}\\
+& = 9 + 6\\
+& = 15\\
+& = 5 * 3\\
+&\text{Since $3 \in \mathbb{Z}, P(k)$ holds when $4\leq k<16$}\\
+\end{align*}
+Case $ k \geq 16$\\\\
+By square rooting all sides of inequality(allowed since all sides are nonnegative) it follows that $\sqrt{k} \geq 4$ and thus $\lfloor\sqrt{k}\rfloor \geq 4$. Since $k > 1$ by properties of square roots it follows that $k > \sqrt{k}$ and thus $k > \sqrt{k} \geq  \lfloor\sqrt{k}\rfloor $. Combining these two facts we get $4 \leq   \lfloor\sqrt{k}\rfloor < k$. (****)
+\\We have:
+\begin{align*}
+&f(k)\\
+&= f(\lfloor\sqrt{k}\rfloor)^{2} + 2f(\lfloor\sqrt{k}\rfloor) &\text{(by definition of $f(n)$)}\\
+& =(5a)^2 + 2*(5b) \text{ For some $a,b \in \mathbb{Z}$} &\text{(by IH which can be applied since (****))}\\
+& =25a^2  + 10b\\
+&= 5(5a^2 + 2b)\\
+&\text{Since $(5a^2+2b) \in \mathbb{Z}, P(k)$ holds when $ k \geq 16$}\\
+\end{align*}
+Thus all cases in inductive step holds. Thus by principle of strong induction, for all $n \in \mathbb{N} $ so that $n \geq 4, P(n)$ holds.
+\end{proof}
+
+\section*{Question 3}
+\begin{lemma}{2.1}
+  $ n(n+1)(2n+1)(3n^2 +3n−1) = 6n^5+15n^4+10n^3-n $
+\end{lemma}
+\begin{proof} [Proof of Lemma 2.1]
+  \begin{align*}
+  n(n+1)(2n+1)(3n^2 +3n−1) & = (n^2+n)(2n+1)(3n^2 +3n - 1) \\
+  & = (n^2+n)(2n+1)(3n^2 +3n−1)  \\
+  & = (2n^3+n^2+2n^2+n)(3n^2 +3n−1)  \\
+  & = (2n^3+3n^2+n)(3n^2 +3n−1)  \\
+  & = (6n^5+6n^4-2n^3+9n^4+9n^2-n+3n^3+3n^2-n) \\
+  & = 6n^5+15n^4+10n^3-n
+  \end{align*}
+\end{proof}
+\begin{proof} [Proof of Question 3]
+Define the predicate $P(n)$ as follows:
+$$ P(n) :  \sum_{k=1}^{n}k^4 = \frac{n(n+1)(2n+1)(3n^2 +3n-1)}{30} $$ \\\\
+Let C be the set of natural numbers that falsify P. Assume towards a contradiction that
+C is non empty. Since C is a non empty set of natural numbers, C has a minimum element
+by the well ordering principle. Let $c$ denote the minumum element of C. \\
+\indent If n=0, then there are no terms in the summation. By convention the sum $\sum_{k=1}^{n}k^4$
+is equal to $0 = \frac{0(0+1)(2(0)+1)(3(0)^2 +3(0)−1)}{30}$. Thus P(n) holds for n=0. From the fact that $P(0)$
+it follows that $c \geq 1 \implies c-1 \geq 0 \implies c-1 \in \mathbb{N}$.
+Since $c-1 < c$, P(c-1) holds. So, \\
+\begin{align*}
+ \sum_{k=1}^{c}k^4 & = \sum_{k=1}^{c-1}k^4 +c^4 &\text{(by definition of $\sum_{k=1}^{c}k^4$)} \\
+& = \frac{(c-1)(c-1+1)(2(c-1)+1)(3(c-1)^2+3(c-1)-1)}{30} +c^4 &\text{(since P(c-1) holds)}\\
+& = \frac{(c-1)(c)(2c-1)(3(c^2-2c+1)+3c-3-1)}{30} +c^4  \\
+& = \frac{(c^2-c)(2c-1)(3c^2-3c-1)}{30} +c^4  \\
+& = \frac{(2c^3-3c^2+c)(3c^2+3c-1)}{30} +c^4 \\
+& = \frac{6c^5-15c^4+10c^3-c+30c^4}{30} \\
+& = \frac{6c^5+15c^4+10c^3-c}{30} \\
+& = \frac{c(c+1)(2c+1)(3c^2 +3c−1)}{30} &\text{(by Lemma 2.1)} \\
+& \implies P(c) \ is \ true .
+\end{align*}
+Recall that P(c) is false, by assumption. This contradicts that fact that
+P(c) is true. Thus, $\forall n \in \mathbb{N}.P(n)$.
+\end{proof}
+
+\section*{Question 4}
+\begin{proof}
+Define the predicate P(x,y) as follows for all $(x,y) \in \mathbb{N}^2$:
+$$ P(x,y) : L(x,y) \ is \ a \ power \ of \ 2 $$
+We prove that $ P(x,y)$ holds for each $(x,y) \in \mathbb{N}^2$ by using structural induction. \\
+\textbf{Base Case:} Let (x,y) = (1, 1). Then $L(1, 1) = 1^2 + 1^2 = 2 = 2^1$. Thus P(1, 1) holds.
+Let (x,y) = (-1,1). Then $L(1, -1) = 1^2 + (-1)^2 = 2 =2^1$. Thus P(-1, 1) holds. \\
+\textbf{Induction Step:} Suppose $(x_1, y_1), (x_2, y_2) \in \mathbb{N}^2$
+be arbitrary such that $P(x_1, y_1)$ and  $P(x_2, y_2)$ hold. We will prove that
+P(x, y) holds for any (x,y) that can be constructed from $(x_1, y_1)$ and $(y_1, y_2)$. \\
+\indent \textbf{Case 1:} If $(x, y) = (x_1, -y_1)$, then..
+\begin{align*}
+ L(x, y) & =   x_1^2 + (-y_1)^2  \\
+ & =  x_1^2 + (-y_1)(-y_1) \\
+ & =  x_1^2 + (-1)(-1)y_1^2 \\
+ & =  x_1^2 + y_1^2 \\
+ & =  2^i, for \ some \ i \in \mathbb{N} &\text{(by induction hypothesis)}
+\end{align*}
+Thus P(x,y) holds for $(x,y) = (x_1, -y_1)$ \\
+\indent \textbf{Case 2:} If $(x, y) = (x_1x_2 - y_1y_2, x_1y_2 + x_2y_1)$, then..
+\begin{align*}
+ L(x, y) & =   (x_1x_2 - y_1y_2)^2 + (x_1y_2 + x_2y_1)^2 \\
+ & =  (x_1x_2)^2 - 2x_1x_2y_1y_2 + (y_1y_2)^2 + (x_1y_2)^2 + 2x_1x_2y_1y_2 + (x_2y_1)^2\\
+ & =  (x_1x_2)^2  + (y_1y_2)^2 + (x_1y_2)^2  + (x_2y_1)^2 - 2x_1x_2y_1y_2 + 2x_1x_2y_1y_2 \\
+ & =  (x_1x_2)^2  + (y_1y_2)^2 + (x_1y_2)^2 + (x_2y_1)^2 \\
+ & =  x_1^2(x_2^2 + y_2^2) +  y_1^2(x_2^2 + y_2^2) \\
+ & =  x_1^2 2^i +  y_1^2 2^i, for \ some \ i \in \mathbb{N}  &\text{(by induction hypothesis)} \\
+ & =  2^i(x_1^2 + y_1^2) \\
+ & =  2^i 2^j, for \ some \ j \in \mathbb{N} &\text{(by induction hypothesis)} \\
+ & =  2^{i+j} \\
+ & \implies L(x,y) \ is \ a \ power \ of \ two.
+\end{align*}
+Thus P(x,y) holds for $(x,y) = (x_1x_2 - y_1y_2, x_1y_2 + x_2y_1)$ \\
+Thus, $P(x, y)$ holds for all $(x, y) \in \mathbb{N}^2$
+\end{proof}
+
+
+\section*{Question 5}
+
+\begin{proof}
+Define the predicate $P(w)$ as follows for all strings $w$ composed of characters in $\Sigma$: \\
+$$P(w):{({w}^{R})}^{R} = w.$$
+\textbf{Base Case:}
+\\Let $w = \epsilon$
+\\\indent Then ${({w}^{R})}^{R} = {({\epsilon}^{R})}^{R} $
+\\\indent Then ${({w}^{R})}^{R} = {(\epsilon)}^{R} $ since ${\epsilon}^{R} = \epsilon$
+\\\indent Then ${({w}^{R})}^{R} = \epsilon $ since ${\epsilon}^{R} = \epsilon$
+\\\indent Then ${({w}^{R})}^{R} = w $ since $w = \epsilon$
+\\Then $P(\epsilon)$ holds.
+\\Now let $w$ be a string composed of an arbitray single character in $\Sigma$. (i.e, w = $a$ where
+$a \in \Sigma$ and $w$ is a string)
+\\\indent Then ${({w}^{R})}^{R} = {({a}^{R})}^{R} $
+\\\indent Then ${({a}^{R})}^{R}  = {({(\epsilon a)}^{R})}^{R} $ since $\epsilon a = a$
+\\\indent Then ${({(\epsilon a)}^{R})}^{R} = {(a{\epsilon}^{R})}^{R} $ since $\epsilon$ is a string, the recursive definition is applied.
+\\\indent Then ${(a{\epsilon}^{R})}^{R} = {(a\epsilon)}^{R}$ since ${\epsilon}^{R} = \epsilon$
+\\\indent Then ${(a\epsilon)}^{R} = {a}^{R}$ since $a\epsilon  = a$
+\\\indent Then ${a}^{R}= {(\epsilon a)}^{R}$ since $\epsilon a = a$
+\\\indent Then  ${(\epsilon a)}^{R} = a {\epsilon}^{R}$ since $\epsilon$ is a string, the recursive definition is applied.
+\\\indent Then $a {\epsilon}^{R} = a \epsilon$
+\\\indent Then $a \epsilon = a$
+\\\indent Then ${({w}^{R})}^{R} = {({a}^{R})}^{R} = a $
+\\ Then $P(w)$ holds.
+\\\textbf{Induction Step:}
+\\Let $u$ be a string composed of characters in $\Sigma$ such that $P(u)$ holds.
+\\Then we can construct a bigger string composed of character in $\Sigma$ by composing $u$ with a single string $a\in\Sigma$ such that the composition result in $ua$ or $au$.
+\\\indent \textbf{Case 1:}
+\\\indent Let the newly composed string be $ua$.
+\\\indent\indent Now consider ${({(ua)}^{R})}^{R}$.
+\\\indent\indent Then ${({(ua)}^{R})}^{R} = {({a}^{R}{u}^{R})}^{R}$ since ${(ua)}^{R} = {a}^{R}{u}^{R}$
+\\\indent\indent Then ${({a}^{R}{u}^{R})}^{R} = {({u}^{R})}^{R}{({a}^{R})}^{R}$
+\\\indent\indent Then ${({u}^{R})}^{R}{({a}^{R})}^{R} = ua$ since the base case states ${({a}^{R})}^{R} = a$
+\\\indent\indent and by assumption ${({u}^{R})}^{R} = u$.
+\\\indent\indent Then ${({(ua)}^{R})}^{R} = ua$
+\\\indent Then $P(ua)$ holds.
+\\\indent \textbf{Case 2:}
+\\\indent Let the newly composed string be $au$.
+\\\indent\indent Now consider ${({(au)}^{R})}^{R}$.
+\\\indent\indent Then ${({(au)}^{R})}^{R} = {({u}^{R}{a}^{R})}^{R}$ since ${(au)}^{R} = {u}^{R}{a}^{R}$
+\\\indent\indent Then ${({u}^{R}{a}^{R})}^{R} = {({a}^{R})}^{R}{({u}^{R})}^{R}$
+\\\indent\indent Then ${({a}^{R})}^{R}{({u}^{R})}^{R} = au$ since the base case states ${({a}^{R})}^{R} = a$
+\\\indent\indent and by assumption ${({u}^{R})}^{R} = u$.
+\\\indent\indent Then ${({(au)}^{R})}^{R} = au$
+\\\indent Then $P(au)$ holds.
+\\ Therefore, by induction, for all strings $w$ composed of characters in $\Sigma$, $P(w)$ holds.\\
+\end{proof}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+
+\end{document}

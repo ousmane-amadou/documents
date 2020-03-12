@@ -1,0 +1,339 @@
+\documentclass{article}
+\usepackage{fullpage,amsmath,amssymb}
+\usepackage{hyperref}
+\title{CSC236H, Fall 2017\\
+Assignment 2\\
+Due November 12th, 10:00 p.m.}
+\renewcommand{\today}{~}
+\hypersetup{pdfpagemode=Fullscreen,
+  colorlinks=true,
+  linkfileprefix={}}
+  
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+  
+  
+\begin{document}
+\maketitle
+\vspace{-1.5cm}
+\begin{itemize}
+	\item You may work in groups of no more than \textbf{three} students, and you should 
+	produce a single solution in a PDF file named \texttt{a2.pdf}, submitted to {MarkUs}. Submissions must be \textbf{typed}. 
+	\item Please refer to the course information sheet for the \textbf{late submission policy}.
+\end{itemize}
+\vspace{1\baselineskip}
+
+\begin{enumerate}
+
+
+\item Let $k\in\mathbb N$ and $m\in\mathbb R$. 
+Consider the following function $S:\mathbb R\times\mathbb N\to \mathbb R$. 
+$$S(m,k) = \left\{
+\begin{array}{ll}
+3m & \mbox{if } k = 0\\
+4S(\frac{m}{2}, k-1) + 3m & \mbox{if } k \geq 1
+\end{array} \right .$$
+Find a closed-form expression for $S(m,k)$ using repeated substitution.\\
+Prove the correctness of the expression you obtained.\\
+\\\\
+Assume $k > 0$
+\begin{align*}
+ S(m, k) & = 4S(\frac{m}{2}, k-1) +3m 
+&\text{ After $i = 1$ substitution}\\
+& = 4(4S(\frac{m}{4},k-2) + \frac{3m}{2}) +3m\\
+& = {4}^{2}S(\frac{m}{{2}^{2}},k-2) + ({2}^{2-1} + 1)3m
+&\text{ After $i = 2$ substitution}\\
+& = {4}^{2}(4S(\frac{m}{{2}^{3}},k-3) + \frac{3m}{4}) + ({2}^{2-1} + 1)3m\\
+& = {4}^{3}S(\frac{m}{{2}^{3}},k-3) + ({2}^{3-1} + {2}^{2-1} + 1)3m
+&\text{ After $i = 3$ substitution}\\
+&\quad\quad\quad\quad\quad\quad\quad\quad \vdots\\
+& = {4}^{k}S(\frac{m}{{2}^{k}}, k - k) + ({2}^{k-1} + {2}^{k-2} \dotsi + 1)3m
+&\text{ After $i = k$ substitution}\\
+& = {4}^{k}\frac{3m}{{2}^{k}} + ({2}^{k-1} + {2}^{k-2} \dotsi + 1)3m\\
+& = {2}^{k}3m + ({2}^{k-1} + {2}^{k-2} \dotsi + 1)3m\\
+& = ({2}^{k} + {2}^{k-1} \dotsi + 1)3m\\
+& = (\frac{1 - {2}^{k+1}}{1-2})3m= ({2}^{k+1} - 1)3m
+\end{align*}
+\newpage
+Let's define the predicate, $P(k)$, the following way:\\
+$S(m, k) = ({2}^{k+1} - 1)3m$ for a given $m \in\mathbb{R}$ and $k \in \mathbb{N}$\\
+Now let $m \in\mathbb{R}$\\
+\textbf{Base Case:}\\
+Let $k = 0$
+\\$S(m, k) = 3m = ({2}^{0+1}-1)3m$
+\\Therefore $P(0)$ holds\\
+\textbf{Inductive Step:}\\
+Let $k > 0, k \in\mathbb{N}$ and $j \in\mathbb{N}$ such that $0\le j \le k$\\
+Assume $P(j)$ holds for all $j$ [IH]\\
+$S(m, k + 1) = 4S(\frac{m}{2}, k) + 3m $\\
+$S(\frac{m}{2}, k) = ({2}^{k} - 1)\frac{3m}{2}$ by the induction hypothesis and because $\frac{m}{2} \in\mathbb{R}$ as $m \in\mathbb{R}$\\
+$S(m, k + 1) =  4({2}^{k} - 1)\frac{3m}{2} + 3m = ({2}^{k+1} - 2)3m + 3m$\\
+$S(m, k + 1) = ({2}^{k+1} - 2 + 1)3m = ({2}^{k+1} - 1)3m$\\
+Therefore $P(k+1)$ holds.\\
+Thus, by the principle of strong induction, $P(k)$ holds for all $k \in\mathbb{N}$
+
+\item Consider the following algorithm:\\
+
+\textbf{Precondition:} $A$ is a non-empty list of elements.\\
+\textbf{Postcondition:} returns the reverse of $A$.\\
+\begin{tabbing}
+	MM\=MM\=MM\=MM\=MM\=\kill
+	\>\textbf{def} $reverse\_list(A)$:\\
+	1.\>  \> i = 1  \\ 
+	2.\>  \> t = len(A)\\ 
+	3.\>  \> B = [\:]  \\
+	4.\>  \> \textbf{while} (i $<$ len(A) + 1):\\       
+	5.\>  \> \> B.append(A[t - i])\\       
+	6.\>  \> \> i = i + 1\\
+	7.\>  \> \textbf{return} B
+\end{tabbing}
+
+\begin{enumerate}
+	\item Give an appropriate loop invariant for the purpose of proving partial correctness for the above program 
+	with respect to its given specification. \\
+	Prove your loop invariant.\\\\
+	Let A be a non empty list of elements.\\
+	Let's define the loop invariant, $LI(k)$, as follows:\\
+	If the loop iterates at least $k$ times, then
+	\begin{enumerate}
+	   \item ${i}_{k} = 1 + k$ and $1 \le {i}_{k}\le$ len(A) + 1
+	   \item B is the last $k$ elements of A in reverse order of how they appear in A
+	\end{enumerate}
+\newpage
+    Proof of $LI(k):$\\\\
+	\textbf{Base Case:}\\
+	Let $k = 0$\\
+	Then by line 1, ${i}_{0} = 1$\\
+	Also by line 3, B = [\:]\\
+	${i}_{0} = 1 + 0$ and $1 \le {i}_{0} \le$ len(A) + 1 as A is non empty\\
+	B is the last 0 elements of A in reversed order, as B is empty\\
+	Therefore $LI(0)$ holds\\
+	\textbf{Inductive Step:}\\
+	Let $n \in\mathbb{N}$ and assume $LI(n)$ holds. [IH]\\
+	Then ${i}_{n} = n + 1$\\
+	Then A[t - ${i}_{n}$] = A[t - n - 1]\\
+	Then A[t - ${i}_{n}$] is the ${n+1}^{th}$ last element of A.\\
+	Before line 5, B has n elements by $LI(n)$\\
+	By line 5, the ${n+1}^{th}$ first element of B is the ${n+1}^{th}$ last element of A\\
+	Also the first n elements of B is the last n elements of A in reversed order by $LI(n)$\\
+	Then B is the last $n+1$ elements of A in reversed order\\
+	By line 6, ${i}_{n+1} = {i}_{n} + 1 = 1 + n + 1$\\
+	Also $1 \le {i}_{n} < {i}_{n+1}$ by $LI(n)$\\
+	Since, after n iterations, another iteration exists, ${i}_{n} <$ len(A) + 1\\
+	Then ${i}_{n+1} \leq$ len(A) + 1 \\
+	Then $1 \le {i}_{n+1} \le $ len(A) + 1\\
+	Therefore $LI(n+1)$ holds.
+	\item Use your loop invariant from part (a) to prove partial correctness for the above program 
+	with respect to its given specification.\\\\
+	Let A be a non empty list of elements.\\
+	Assume the loop terminates after $k$ iterations.\\
+	Then $\neg$(${i}_{k} <$ len(A) + 1)\\
+	Then ${i}_{k} \ge$ len(A) + 1\\
+	Also, ${i}_{k} \le$ len(A) + 1, by $LI(k)$ part i\\
+	Then ${i}_{k} =$ len(A) + 1\\
+	Then $k=$ len(A) by $LI(k)$ part i\\
+	Also, B is the last $k$ elements of A in reversed order by $LI(k)$ part ii\\
+	Then B is the len(A) elements of A in reversed order\\
+	Then B is the entire list A in reversed order\\
+	The program returns B\\
+	So the program returns the correct value. 
+	
+	
+\end{enumerate}
+
+\newpage
+\item Consider the following recursive algorithm:\\
+\textbf{Preconditions:} $A$ is an array of integers. $f$ and $\ell$ are integers such that $0\leq f \leq \ell < len(A)$.\\
+\textbf{Postconditions:} For all integers $b$, if $b$ occurs more than $\frac{len(A[f:\ell +1])}{2}$ times in $A[f:\ell +1]$, 
+then $maj(A,f,\ell)$ returns $b$. 
+
+\begin{tabbing}
+	MM\=MM\=MM\=MM\=MM\=\kill
+	\>\textbf{def} $maj(A,f, \ell)$:\\
+	1.\>  \>  \textbf{if} $f ==\ell$:\\ 
+  2.\>  \>  \>  \textbf{return} $A[f]$\label{base}\\
+	3.\>  \>  $m = \lfloor (f+\ell)/ 2\rfloor$\label{mdef}\\
+	4.\>  \>  $x = maj(A,f,m)$\label{majrec1}\\
+	5.\>  \>  $c = 0$\\
+	6.\>  \>  $i = f$\label{winit}\\
+	7.\>  \>  \textbf{while} $i \leq \ell$:\label{wloop}\\
+	8.\>  \> \> \textbf{if} $A[i] = x$: \\ 
+	9.\>  \> \>  \> $c = c +1$\label{comps}\\
+	10.\>  \> \>  $i = i +1$\label{endloop}\\
+  11.\>  \>  \textbf{if} $c >   (\ell -f+1)/2$:\label{test}\\
+  12.\>  \>  \>  \textbf{return} $x$\label{majret1}\\
+  13.\>  \>  \textbf{return}  $maj(A,m+1,\ell)$\label{majrec2}
+\end{tabbing}
+
+
+\begin{enumerate}
+\item Let $T(n)$ denote the worst-case running time of the algorithm below on inputs of size $n$.
+Write a \textbf{recurrence relation} satisfied by $T$. 
+Then, give an asymptotic \textbf{upper-bound} for the worst-case running time of the algorithm. \\
+
+Make sure to define $n$ precisely and justify that your recurrence is correct 
+by referring to the algorithm to describe how you obtained each term in your answer.\\
+For this part of the question (and only this part), you may assume that  $len(A[f:\ell+1])$ and $len(A)$ are powers of 2.\\
+
+Let $n = len(A[f:\ell+1]) = \ell+1 - f$\\\\
+When $n = 1$, we have $\ell = f$ by rearranging $1 = \ell + 1 = f$.
+Thus the condition on line 1 is fulfilled and line 2 is run.
+Since random access is constant in a list, $T(1)$ takes constant time,
+call it $a$.\\\\
+
+If $n$ were to be larger than 1 then lines 1-13 would execute. Line 3 is a calculation which takes constant time, call it $b$.\\
+
+Note that since $n > 1$, by assumption $len(A[f:\ell+1])$ is a power of 2, and $n = len(A[f:\ell+1])$, $n$ is an even number. Rearranging and adding terms to $n = \ell + 1 - f$, we get $n - 1 + 2f = \ell + f$. Since $n - 1$ is odd, and $2f$ is even, $\ell + f$ is odd and thus $m = \lfloor (f+\ell)/ 2\rfloor = (\ell + f - 1)/2 (*)$.
+
+Line 4 is a recursive call with input size $len(A[f:m+1]) = m + 1 - f = (\ell + f - 1)/2 + 1 - f = n/2$. Thus line 4 takes T($n/2$) time.\\\\
+
+Lines 5-6 are basic operations and take constant time. call it $g$.\\\\
+
+Lines 8-10  take constant time, call it $d$. They make up the loop body of the loop from lines 7 - 10. $i$ starts as having the value of $f$ by line 6, increments by 1 after each iteration by line 10, and stops when it is greater than $\ell$ by line 7. Thus lines 8-10 repeat for $\ell - f + 1 = n$ times. Lines 8-10 takes $nd$ time.
+
+Since we are measuring worst case, we will assume the condition on line 11 fails and line 13 runs.
+
+Line 13 is a recursive call with input size $len(A[m+1: \ell+1]) = \ell + 1 -(m+1) = \ell - (\ell + f - 1)/2 = n/2$. Thus line 13 takes T($n/2$) time.\\\\
+
+So when $n > 1, T(n) = b + T(n/2) + g + nd + T(n/2) = 2T(n/2) + nd + k$ if we let $k = g + b$.
+
+Thus the final equation is \\
+
+ \[T(n) = \begin{cases} 
+a & n = 1 \\
+2T(n/2) + nd + k & n >1 \\
+\end{cases}
+\]
+
+Since $log_2(2) = 1$ and $nd + k \in \Theta(n)$ we can apply the master theorem from class and say $T(n) \in O(nlogn)$.
+\item State an \textbf{invariant} for the loop on line 7 that describes the value of $c$ at the end of every iteration of the loop.\\
+\textbf{Prove} your loop invariant.
+ Define $LI(k)$ as:\\
+ If the loop iterates at least $k$ times then
+ \begin{enumerate}
+ 	\item $f \leq i_k \leq \ell + 1$
+ 	\item $c_k$ is the number of times $x$ appears in $A[f:i_k]$\\
+ \end{enumerate}
+
+Proof of $LI(k)$:\\\\
+Base case, proving $LI(0)$:\\
+$i_0 = f$ 				\quad\quad (by line 6)\\
+$ \leq \ell + 1$		\quad\quad (since $f \leq \ell$ by precondition)\\
+Thus $f \leq i_0 \leq \ell + 1$.\\
+$A[f:f]$ is the empty list, so the number of times anything is in it is 0.
+$c_k = 0$ by line 5, so it is the correct amount of times $x$ appears in $A[f:f]$.\\
+Thus base case holds.\\\\
+Inductive step, assume $LI(n)$ for some $n \in \mathbb{N}$ [IH]\\
+WTP: $LI(n + 1)$\\
+Note that since there was $n + 1$ iterations, $i_n \leq \ell$. Thus
+$i_n + 1 \leq \ell + 1$. By line 10, $i_n + 1 = i_{n+1}$. Thus $i_{n+1} \leq \ell + 1$. By IH $i_n \geq f$. Thus $i_{n+1} \geq f$.\\
+Thus $ f \leq i_{n+1} \leq \ell + 1$\\
+Note that $A[f:i_{n+1}]$ is just $A[f:i_n]$ with $A[i]$ appended to the end.
+By IH, $c_n$ counts the number of times $x$ appears in $A[f:i_n]$. If $A[i] = x$ then there are $c_n + 1$ occurrences of $x$. $A[i] = x$ is the condition on line 8. Line 9 executes and $c_{n+1} = c_n +1$. Thus if  $A[i] = x$, $c_{n+1}$ is the correct value. If $A[i]\neq x$ then there are $c_n$ occurrences of $x$. $A[i] \neq x$ means the condition on line 8 fails and $c_n$ doesn't change. Thus $c_{n+1} = c_n$.
+Thus $c_{n+1}$ is the correct value. In both cases $c_{n+1}$ returns the number of occurences of $x$ in $A[f:i_{n+1}]$.\\
+
+Thus $LI(k)$ is proven.
+  
+
+\item Prove the \textbf{correctness} of $maj$ with respect to the given specification.\\
+Use induction for the correctness proof and follow the steps (i)-(iv) below.\\
+
+You may assume that the loop on line 7 terminates without proof.\\
+Also, you may use the following fact without proof:\\
+If $u \leq v$, $v+1 \leq w$, and $b$ occurs more than $s+s'$
+times in $B[u:w+1]$, then\\
+either
+$b$ occurs more than $s$ times in $B[u:v+1]$ or
+$b$ occurs more than $s'$
+times in $B[v+1:w+1]$. (Recall that $B[i:j+1]$ is the slice of $B$ from $i$ to $j$)
+
+
+%\begin{spacing}
+%\vspace*{-0.2in}
+%\end{spacing}
+
+\begin{enumerate}
+\item Define a predicate $P(k)$ that denotes the correctness of $maj$ for an input with size $k$.\\\\
+%such that proving $\forall k \in \ints^+.P(k)$ proves the claim.
+Define $P(k)$ as:\\
+If $A$ is an array of integers and $f, l$ are integers such that $0\le f \le l < len(A)$ and $len(A[f:\ell +1]) = k$ for $k \in \mathbb{{Z}^{+}}$, then $maj(A, f, l)$ terminates and returns $b \in \mathbb{{Z}^{+}}$ such that $b$ occurs more than $\frac{len(A[f:\ell +1])}{2}$ times in $A[f:\ell +1]$
+\item Prove the base case.\\\\
+WTP: $P(1)$\\\\
+Let $A$ be an array of integers and $f, l$ are integers such that $0\le f \le l < len(A)$\\
+Since $len(A[f:\ell + 1]) = 1$, the only element in $A[f:\ell +1]$ is $A[f]$.
+Let $b$ be an arbitrary integer such $b$ occurs more than $1/2$ times in  $len(A[f:\ell + 1])$. The only way for this to be possible is if $b = A[f]$.\\\\
+Note that $len(A[f:\ell + 1]) = 1$ means  $\ell + 1 -f = 1$ which means $\ell = f$.
+Thus the condition on line 1 passes, and line 2 runs. Thus the program terminates and $A[f] = b$ is returned by line 2.\\\\
+Thus base case $P(1)$ holds.
+\item State the induction hypothesis.\\\\
+Let $n$ be a positive integer. Assume for all positive integers $j$ such that $1 \leq j < n,P(j)$ holds [IH]\\\\\\
+
+\item Prove the induction step.\\\\
+WTP: $P(n)$\\
+Before we do this, let us prove some useful facts.
+\quad\begin{enumerate}
+	\item[](*): $len(A[f:m+1])/2 + len(A[m+1:\ell + 1])/2 = len(A[f:\ell + 1]/2)$\\
+	
+	Proof: There are two cases. \\\\
+	Case: $len(A[f:\ell + 1]$ is even\\
+	$len(A[f:\ell + 1] = \ell + 1 - f \Rightarrow $\\
+	$len(A[f:\ell + 1] + 2f - 1 = \ell + f \Rightarrow $\\
+	$\ell +f$ is odd since $len(A[f:\ell + 1] + 2f$ is even and 1 is odd $\Rightarrow$\\
+	$\lfloor(\ell+f)/2\rfloor = (\ell+f-1)/2 \Rightarrow$\\
+	$m = (\ell + f-1)/2$\\
+	Thus $len(A[f:m+1])/2 + len(A[m+1:\ell + 1])/2 = $ \\
+	$(m+1-f)/2 + (\ell+1 - (m+1))/2 = $\\
+	$\frac{\frac{\ell + f -1}{2} +1 -f}{2} + \frac{\ell - \frac{\ell + f -1}{2}}{2} =$\\
+	$\frac{\ell -f + 1}{4} + \frac{\ell -f + 1}{4} = $\\
+	$\frac{\ell -f+1}{2} = len(A[f:\ell +1])/2$\\
+	First case works\\\\
+    Case: $len(A[f:\ell + 1]$ is odd\\
+    $len(A[f:\ell + 1] = \ell + 1 - f \Rightarrow $\\
+    $len(A[f:\ell + 1] + 2f - 1 = \ell + f \Rightarrow $\\
+    $\ell +f$ is even since $len(A[f:\ell + 1] + 2f$ is odd and 1 is odd $\Rightarrow$\\
+    $\lfloor(\ell+f)/2\rfloor = (\ell+f)/2 \Rightarrow$\\
+    $m = (\ell + f)/2$\\
+    Thus $len(A[f:m+1])/2 + len(A[m+1:\ell + 1])/2 = $ \\
+    $(m+1-f)/2 + (\ell+1 - (m+1))/2 = $\\
+    $\frac{\frac{\ell + f}{2} +1 -f}{2} + \frac{\ell - \frac{\ell + f}{2}}{2} =$\\
+    $\frac{\ell -f + 2}{4} + \frac{\ell -f}{4} = $\\
+    $\frac{\ell -f+1}{2} = len(A[f:\ell +1])/2$\\
+    Thus both cases work and we are done proving (*)\\\\
+	\item[](**):After the loop on line 7 terminates(happens by assumption), $c$ is the number of times $x$ occurs in $A[f:\ell + 1]$\\
+	
+	Proof:\\\\
+	By assumption, the loop terminates, so by line 7, $i_k \geq \ell + 1$, where $k$ is number of times the loop executed up to and including the last iteration. By the first part of Loop invariant in question 3b, $i_k \leq \ell + 1$.
+	Thus $i_k = \ell + 1$. By the second part of Loop invariant in question 3b, $c_k$ then is the number of occurences of $x$ in $A[f:\ell + 1]$. Since $c_k$ is the value of $c$ after the last iteration, The value $c$ after the loop terminates is the number of occurrences of $x$ in $A[f:\ell +1]$. The proof of (**) is done.\\\\
+\end{enumerate}
+
+Now we can prove $P(n)$\\
+Proof:\\\\
+Let $A$ be an array of integers and $f, l$ are integers such that $0\le f \le l < len(A)$\\
+Let $b$ be an integer that appears more than $len(A[f:\ell+1])/2$ times in $A[f:\ell +1]$ such that $len(A[f:\ell +1]) = n$. 
+
+Since $f \leq \ell \Rightarrow f + f \leq  f + \ell$, which means $f \leq (f+\ell)/2$.
+Since $f$ is an integer, $f \leq  \lfloor(f+\ell)/2\rfloor = m$ and thus $f \leq m$.
+
+Since we assumed $n >1$, $\ell > f \Rightarrow \ell + \ell > f + \ell$ and thus, $\ell >  (f + \ell)/2$. Since $m =  \lfloor(f+\ell)/2\rfloor \leq  (f+\ell)/2$, we have $\ell > m$. Since $\ell$ is an integer, we know $\ell \geq m + 1$.
+
+
+
+By (*) we know that $len(A[f:m+1])/2 + len(A[m+1:\ell + 1])/2 = len(A[f:\ell + 1]/2$. 
+
+Combining (*) with the fact that  $\ell \geq m + 1$ and $f \leq m$ and $f \leq \ell$, we can apply the assumption given in the question and say that either $b$ appears more than $len(A[f:m+1])/2$ times in $A[f:m+1]$ or that $b$ appears more than $len(A[m+1:\ell + 1])/2$ times in $A[m+1:\ell + 1]$. We'll split the proof into two cases.
+
+\quad\begin{enumerate}
+	\item[]Case $b$ appears more than $len(A[f:m+1])/2$ times in $A[f:m+1]$\\\\
+	Note that $len(A[f:m+1]) = m + 1 - f \leq \ell - f < \ell + 1 - f = len(A[f:\ell+1]) = n $. Thus we can apply IH on $len(A[f:m+1])$.\\
+ By IH we can conclude that  $maj(A,f,m)$ terminates and returns the correct value. Since  $b$ appears more than $len(A[f:m+1])/2$ times in $A[f:m+1]$ in this case, $b$ is returned by $maj(A,f,m)$. By line 5, value of $x$ is $maj(A,f,m) = b$. By (**), after the loop on line 7 terminates. $c$ is the number of occurences of $x$ in $A[f:\ell +1]$. Since $b$ is defined to appear more than $len(A[f:\ell+1]) = \ell -f +1$ times, the condition on line 11 is fulfilled and $x$ is returned by line 12. Since $x=b$, the function terminates and correctly returns $b$.\\
+ 
+ \item[]Case $b$ appears more than $len(A[m+1:\ell+1)]/2$ times in $A[m+1:\ell +1]$.\\
+ Note that no other value besides $b$ occurs more than $len(A[f:\ell +1])/2$ times in $A[f:\ell+1]$. Suppose there's another value $w$ that occurs more than $len(A[f:\ell +1])/2$ times in $A[f:\ell+1]$. Then the total occurrences of both $w$ and $b$ would be greater than $ len(A[f:\ell +1])/2 + len(A[f:\ell +1])/2 = len(A[f:\ell +1])$ which is a contradiction.\\
+ Note that $len(A[m+1:\ell+1) = \ell + 1 -(m + 1)= \ell - m \leq \ell - f < \ell + 1 - f = len(A[f:\ell+1]) = n $. Thus we can apply IH on $len(A[m+1:\ell+1])$.\\
+ By IH we can conclude that  $maj(A,m+1,\ell)$ terminates and  returns the correct value. Since  $b$ appears more than $len(A[m+1:\ell)]/2$ times in $A[m+1:\ell +1]$ in this case, $b$ is returned by $maj(A,m+1,\ell)$. Assuming that $x \neq b$, line 12 will fail to run since $x$ will not occur more thab $len(A[f:\ell +1])/2$ times in $A[f:\ell+1]$. Then line 13 will run and will return $maj(A,m+1,\ell)$ which is $b$.
+\end{enumerate}
+Thus in both cases, the program terminates and correctly returns $b$. Our inductive step and overall proof is done and $maj(A,f,\ell)$ returns the correct value and terminates.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
